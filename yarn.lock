@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@firebase/webchannel-wrapper@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.2.1.tgz#2c4dbc15edd1de4f656d543a6f512ded7978ef72"
+
 abab@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
@@ -1887,10 +1891,11 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
-firebase@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-4.3.1.tgz#0e6132ee22af323b350d03b6eb1680bb1a6f9ee6"
+firebase@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-4.5.0.tgz#e0973a9803b74c4c9d73d19f874712e6e9d16ba7"
   dependencies:
+    "@firebase/webchannel-wrapper" "^0.2.1"
     dom-storage "^2.0.2"
     faye-websocket "0.9.3"
     jsonwebtoken "^7.3.0"
