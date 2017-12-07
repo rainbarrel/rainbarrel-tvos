@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './src/App.ios';
+import AppLauncher from './src/AppLauncher.ios';
 
-AppRegistry.registerComponent('RainbarrelTvOS', () => App);
+AppRegistry.registerComponent('RainbarrelTvOS', () => AppLauncher);
