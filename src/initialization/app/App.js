@@ -1,12 +1,23 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const App = () => (
-  <View>
-    <Text>
-      App
-    </Text>
-  </View>
-);
+const App = () => {
+  const { textStyle } = styles;
+
+  return (
+    <View>
+      <Text style={textStyle}>
+        App
+      </Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  textStyle: {
+    fontSize: 100
+  }
+});
+
 
 export { App };
