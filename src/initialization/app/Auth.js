@@ -1,27 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import { AuthSelector, Login, Signup } from '../../components/auth';
 
-const Auth = () => {
-  const { containerStyle, textStyle } = styles;
+class Auth extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { authSelection: 'login' };
 
-  return (
-    <View style={containerStyle}>
-      <Text style={textStyle}>
-        Auth
-      </Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  textStyle: {
-    fontSize: 100
+    this.changeAuthSelection = this.changeAuthSelection.bind(this);
+    this.renderAuthSelection = this.renderAuthSelection.bind(this);
   }
-});
+
+  changeAuthSelection(authSelection) {
+    const newState = { authSelection };
+    this.setState(newState);
+  }
+
+  renderAuthSelection() {
+    const { authSelection } = this.state;
+
+    switch (authSelection) {
+      case 'login':
+        return <Login />;
+      case 'signup':
+        return <Signup />;
+      default:
+        return <Login />;
+    }
+  }
+
+  render() {
+    return (
+      <View>
+        <AuthSelector changeAuthSelection={this.changeAuthSelection} />
+        {this.renderAuthSelection()}
+      </View>
+    );
+  }
+}
 
 export { Auth };
