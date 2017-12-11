@@ -1,5 +1,8 @@
 import React from 'react';
 import Firebase from 'firebase';
+import { Provider } from 'react-redux';
+
+import configureStore from './store';
 import initFirebase from './initialization/firebase';
 import { Launching, Auth, App } from './initialization/app';
 
@@ -35,12 +38,25 @@ class AppLauncher extends React.Component {
 
   render() {
     const { loggedIn } = this.state;
+    let store;
 
     switch (loggedIn) {
       case true:
-        return <App />;
+        store = configureStore();
+
+        return (
+          <Provider store={store}>
+            <App />
+          </Provider>
+        );
       case false:
-        return <Auth />;
+        store = configureStore();
+
+        return (
+          <Provider store={store}>
+            <Auth />
+          </Provider>
+        );
       default:
         return <Launching />;
     }
