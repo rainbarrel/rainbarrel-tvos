@@ -10,10 +10,7 @@ class AppLauncher extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      didFetchLoggedInStatus: false,
-      loggedIn: null
-    };
+    this.state = { loggedIn: null };
     initFirebase();
 
     if (process.env.NODE_ENV === 'development') {
@@ -22,11 +19,8 @@ class AppLauncher extends React.Component {
   }
 
   componentDidMount() {
-    let didFetchLoggedInStatus;
-    let loggedIn;
-
     Firebase.auth().onAuthStateChanged((user) => {
-      didFetchLoggedInStatus = true;
+      let loggedIn;
 
       if (user) {
         loggedIn = true;
@@ -34,22 +28,22 @@ class AppLauncher extends React.Component {
         loggedIn = false;
       }
 
-      const newState = { didFetchLoggedInStatus, loggedIn };
+      const newState = { loggedIn };
       this.setState(newState);
     });
   }
 
   render() {
-    const { didFetchLoggedInStatus, loggedIn } = this.state;
-    if (didFetchLoggedInStatus) {
-      if (loggedIn) {
+    const { loggedIn } = this.state;
+
+    switch (loggedIn) {
+      case true:
         return <App />;
-      }
-
-      return <Auth />;
+      case false:
+        return <Auth />;
+      default:
+        return <Launching />;
     }
-
-    return <Launching />;
   }
 }
 
