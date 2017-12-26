@@ -5,5 +5,20 @@
     "react",
     "jsx-a11y",
     "import"
-  ]
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "no-use-before-define": 0,
+    "import/prefer-default-export": 0,
+    "react/prop-types": 0
+  }
 }
