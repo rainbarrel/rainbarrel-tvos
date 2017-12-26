@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { AuthSelector };
+export default AuthSelector;

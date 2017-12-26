@@ -1,6 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import { AuthSelector, Login, Signup } from '../../components/auth';
+
+import AuthSelector from '../../components/auth/AuthSelector';
+import Login from '../../components/auth/Login';
+import Signup from '../../components/auth/Signup';
 
 class Auth extends React.Component {
   constructor(props) {

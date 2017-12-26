@@ -9,4 +9,4 @@ const Signup = () => (
   </View>
 );
 
-export { Signup };
+export default Signup;
