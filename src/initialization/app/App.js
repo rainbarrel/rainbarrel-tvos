@@ -1,23 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import Firebase from 'firebase';
+import { Button } from '../../components/global';
 
-const App = () => {
-  const { textStyle } = styles;
-
-  return (
-    <View>
-      <Text style={textStyle}>
-        App
-      </Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  textStyle: {
-    fontSize: 100
+class App extends React.Component {
+  static logout() {
+    Firebase.auth().signOut(); // change to an AuthAction
   }
-});
 
+  render() {
+    return (
+      <View>
+        <Button onPress={App.logout}>
+          Logout
+        </Button>
+      </View>
+    );
+  }
+}
 
 export { App };

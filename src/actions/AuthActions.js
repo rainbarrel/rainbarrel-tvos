@@ -42,8 +42,6 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
-
-  // startApp();
 };
 
 const loginUserFailure = (dispatch) => {
@@ -70,8 +68,6 @@ const signupUserSuccess = (dispatch, user) => {
         type: SIGNUP_USER_SUCCESS,
         payload: user
       });
-
-      // startApp();
     })
     .catch(() => {
       // error. doing nothing OK for now.

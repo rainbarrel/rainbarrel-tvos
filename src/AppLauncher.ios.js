@@ -10,6 +10,7 @@ class AppLauncher extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loggedIn: null };
+    this.store = configureStore();
     initFirebase();
     console.disableYellowBox = true;
   }
@@ -31,22 +32,17 @@ class AppLauncher extends React.Component {
 
   render() {
     const { loggedIn } = this.state;
-    let store;
 
     switch (loggedIn) {
       case true:
-        store = configureStore();
-
         return (
-          <Provider store={store}>
+          <Provider store={this.store}>
             <App />
           </Provider>
         );
       case false:
-        store = configureStore();
-
         return (
-          <Provider store={store}>
+          <Provider store={this.store}>
             <Auth />
           </Provider>
         );

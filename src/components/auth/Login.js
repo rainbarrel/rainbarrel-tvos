@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
+import { App } from '../../initialization/app';
 import { Input, Button, Spinner } from '../global';
 import { changeEmail, changePassword, loginUserAttempt } from '../../actions';
 
@@ -49,7 +50,12 @@ class Login extends React.Component {
   }
 
   render() {
+    const { user } = this.props;
     const { containerStyle, titleStyle, loginStyle } = styles;
+
+    if (user) {
+      return <App />;
+    }
 
     return (
       <View style={containerStyle}>
@@ -105,8 +111,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, loading, error } = auth;
-  return { email, password, loading, error };
+  const { email, password, loading, error, user } = auth;
+  return { email, password, loading, error, user };
 };
 
 const mapDispatchToProps = dispatch => ({
