@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { App } from '../../initialization/app';
-import { Input, Button, Spinner } from '../global';
+import App from '../app/App';
+import { Input, Button, Spinner } from '../common';
 import { changeEmail, changePassword, loginUserAttempt } from '../../actions';
 
 

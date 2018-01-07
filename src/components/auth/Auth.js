@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import AuthSelector from '../../components/auth/AuthSelector';
-import Login from '../../components/auth/Login';
-import Signup from '../../components/auth/Signup';
+import AuthSelector from './AuthSelector';
+import Login from './Login';
+import Signup from './Signup';
 
 class Auth extends React.Component {
   constructor(props) {
@@ -42,4 +42,4 @@ class Auth extends React.Component {
   }
 }
 
-export { Auth };
+export default Auth;

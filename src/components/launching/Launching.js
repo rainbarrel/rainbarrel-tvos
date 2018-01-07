@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { Launching };
+export default Launching;

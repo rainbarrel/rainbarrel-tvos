@@ -3,8 +3,11 @@ import Firebase from 'firebase';
 import { Provider } from 'react-redux';
 
 import configureStore from './store';
-import initFirebase from './initialization/firebase';
-import { Launching, Auth, App } from './initialization/app';
+import initFirebase from './firebase';
+import App from './components/app/App';
+import Auth from './components/auth/Auth';
+import Launching from './components/launching/Launching';
+
 
 class AppLauncher extends React.Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class AppLauncher extends React.Component {
     this.state = { loggedIn: null };
     this.store = configureStore();
     initFirebase();
-    console.disableYellowBox = true;
+    console.disableYellowBox = true; // for development
   }
 
   componentDidMount() {
