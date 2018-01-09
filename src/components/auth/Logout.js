@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { connect } from 'react-redux';
+import { Button } from '../common';
 import { logoutUserAttempt } from '../../actions';
 
 const Logout = ({ logoutUserAttempt }) => (
-  <Text onPress={logoutUserAttempt}>
+  <Button onPress={logoutUserAttempt}>
     Logout
-  </Text>
+  </Button>
 );
 
 const mapStateToProps = ({ auth }) => {
