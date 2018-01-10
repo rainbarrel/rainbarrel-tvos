@@ -1,7 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-
-import AuthSelector from './AuthSelector';
+import { TabBarIOS } from 'react-native';
 import Login from './Login';
 import Signup from './Signup';
 
@@ -9,35 +7,39 @@ class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.state = { authSelection: 'login' };
-
     this.changeAuthSelection = this.changeAuthSelection.bind(this);
-    this.renderAuthSelection = this.renderAuthSelection.bind(this);
   }
 
   changeAuthSelection(authSelection) {
-    const newState = { authSelection };
-    this.setState(newState);
-  }
-
-  renderAuthSelection() {
-    const { authSelection } = this.state;
-
-    switch (authSelection) {
-      case 'login':
-        return <Login />;
-      case 'signup':
-        return <Signup />;
-      default:
-        return <Login />;
+    if (this.state.authSelection !== authSelection) {
+      const newState = { authSelection };
+      this.setState(newState);
     }
   }
 
   render() {
     return (
-      <View>
-        <AuthSelector changeAuthSelection={this.changeAuthSelection} />
-        {this.renderAuthSelection()}
-      </View>
+      <TabBarIOS
+        unselectedTintColor="white"
+        tintColor="red"
+        barTintColor="#00a1e0"
+      >
+        <TabBarIOS.Item
+          title="Login"
+          selected={this.state.authSelection === 'login'}
+          onPress={() => this.changeAuthSelection('login')}
+        >
+          <Login />
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title="Signup"
+          selected={this.state.authSelection === 'signup'}
+          onPress={() => this.changeAuthSelection('signup')}
+        >
+          <Signup />
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
 }
