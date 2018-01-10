@@ -62,7 +62,7 @@ class Signup extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { containerStyle, titleStyle } = styles;
+    const { containerStyle, titleStyle, buttonWrapperStyle } = styles;
 
     if (user) {
       return <App />;
@@ -99,7 +99,10 @@ class Signup extends React.Component {
         />
 
         {this.renderError()}
-        {this.renderButton()}
+
+        <View style={buttonWrapperStyle}>
+          {this.renderButton()}
+        </View>
       </View>
     );
   }
@@ -119,6 +122,9 @@ const styles = StyleSheet.create({
     fontSize: 140,
     alignSelf: 'center',
     color: 'red'
+  },
+  buttonWrapperStyle: {
+    marginTop: 200
   }
 });
 

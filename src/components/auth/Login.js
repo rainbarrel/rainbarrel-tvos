@@ -51,7 +51,12 @@ class Login extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { containerStyle, titleStyle, loginStyle } = styles;
+    const {
+      containerStyle,
+      titleStyle,
+      loginStyle,
+      buttonWrapperStyle
+    } = styles;
 
     if (user) {
       return <App />;
@@ -84,7 +89,10 @@ class Login extends React.Component {
         />
 
         {this.renderError()}
-        {this.renderButton()}
+
+        <View style={buttonWrapperStyle}>
+          {this.renderButton()}
+        </View>
       </View>
     );
   }
@@ -107,6 +115,9 @@ const styles = StyleSheet.create({
     fontSize: 100,
     alignSelf: 'center',
     color: 'red'
+  },
+  buttonWrapperStyle: {
+    marginTop: 100
   }
 });
 
