@@ -12,7 +12,8 @@ import {
   SIGNUP_USER_FAILURE,
   LOGOUT_USER_ATTEMPT,
   LOGOUT_USER_SUCCESS,
-  LOGOUT_USER_FAILURE
+  LOGOUT_USER_FAILURE,
+  ADD_USER
 } from './types';
 
 export const changeEmail = email => ({
@@ -107,3 +108,8 @@ const logoutUserFailure = (dispatch, errorMsg) => {
     payload: errorMsg
   });
 };
+
+export const addUser = user => ({
+  type: ADD_USER,
+  payload: user
+});

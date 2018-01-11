@@ -14,3 +14,5 @@ export const SIGNUP_USER_FAILURE = 'signup_user_failure';
 export const LOGOUT_USER_ATTEMPT = 'logout_user_attempt';
 export const LOGOUT_USER_SUCCESS = 'logout_user_success';
 export const LOGOUT_USER_FAILURE = 'logout_user_failure';
+
+export const ADD_USER = 'add_user';
