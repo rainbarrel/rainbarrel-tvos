@@ -45,6 +45,7 @@ class LovedOnesList extends React.Component {
 
     return (
       <FlatList
+        removeClippedSubviews={false}
         data={lovedOnes}
         renderItem={this.renderItem}
         keyExtractor={this.keyExtractor}
