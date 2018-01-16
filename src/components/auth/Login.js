@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Input, Button, Spinner } from '../global';
+import App from '../app/App';
+import { Input, Button, Spinner } from '../common';
 import { changeEmail, changePassword, loginUserAttempt } from '../../actions';
 
 
@@ -49,7 +50,17 @@ class Login extends React.Component {
   }
 
   render() {
-    const { containerStyle, titleStyle, loginStyle } = styles;
+    const { user } = this.props;
+    const {
+      containerStyle,
+      titleStyle,
+      loginStyle,
+      buttonWrapperStyle
+    } = styles;
+
+    if (user) {
+      return <App />;
+    }
 
     return (
       <View style={containerStyle}>
@@ -78,7 +89,10 @@ class Login extends React.Component {
         />
 
         {this.renderError()}
-        {this.renderButton()}
+
+        <View style={buttonWrapperStyle}>
+          {this.renderButton()}
+        </View>
       </View>
     );
   }
@@ -101,12 +115,15 @@ const styles = StyleSheet.create({
     fontSize: 100,
     alignSelf: 'center',
     color: 'red'
+  },
+  buttonWrapperStyle: {
+    marginTop: 100
   }
 });
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, loading, error } = auth;
-  return { email, password, loading, error };
+  const { email, password, loading, error, user } = auth;
+  return { email, password, loading, error, user };
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -7,7 +7,11 @@ import {
   LOGIN_USER_FAILURE,
   SIGNUP_USER_ATTEMPT,
   SIGNUP_USER_SUCCESS,
-  SIGNUP_USER_FAILURE
+  SIGNUP_USER_FAILURE,
+  LOGOUT_USER_ATTEMPT,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_FAILURE,
+  ADD_USER
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -32,13 +36,21 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER_SUCCESS:
       return { ...INITIAL_STATE, user: action.payload };
     case LOGIN_USER_FAILURE:
-      return { ...INITIAL_STATE, error: 'Authentication Failed' };
+      return { ...INITIAL_STATE, error: action.payload };
     case SIGNUP_USER_ATTEMPT:
       return { ...state, loading: true, error: '' };
     case SIGNUP_USER_SUCCESS:
       return { ...INITIAL_STATE, user: action.payload };
     case SIGNUP_USER_FAILURE:
       return { ...INITIAL_STATE, error: action.payload };
+    case LOGOUT_USER_ATTEMPT:
+      return { ...state, loading: true, error: '' };
+    case LOGOUT_USER_SUCCESS:
+      return { ...INITIAL_STATE };
+    case LOGOUT_USER_FAILURE:
+      return { ...INITIAL_STATE, error: action.payload };
+    case ADD_USER:
+      return { ...INITIAL_STATE, user: action.payload };
     default:
       return state;
   }

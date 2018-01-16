@@ -9,7 +9,11 @@ import {
   LOGIN_USER_FAILURE,
   SIGNUP_USER_ATTEMPT,
   SIGNUP_USER_SUCCESS,
-  SIGNUP_USER_FAILURE
+  SIGNUP_USER_FAILURE,
+  LOGOUT_USER_ATTEMPT,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_FAILURE,
+  ADD_USER
 } from './types';
 
 export const changeEmail = email => ({
@@ -33,7 +37,7 @@ export const loginUserAttempt = ({ email, password }) => (
 
     Firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
-      .catch(() => loginUserFailure(dispatch));
+      .catch(() => loginUserFailure(dispatch, 'Login Attempt Failed'));
   }
 );
 
@@ -42,12 +46,13 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
-
-  // startApp();
 };
 
-const loginUserFailure = (dispatch) => {
-  dispatch({ type: LOGIN_USER_FAILURE });
+const loginUserFailure = (dispatch, errorMsg) => {
+  dispatch({
+    type: LOGIN_USER_FAILURE,
+    payload: errorMsg
+  });
 };
 
 export const signupUserAttempt = ({ email, password }) => (
@@ -56,7 +61,7 @@ export const signupUserAttempt = ({ email, password }) => (
 
     Firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => signupUserSuccess(dispatch, user))
-      .catch(() => signupUserFailure(dispatch, 'Authentication Failed'));
+      .catch(() => signupUserFailure(dispatch, 'Signup Attempt Failed'));
   }
 );
 
@@ -70,8 +75,6 @@ const signupUserSuccess = (dispatch, user) => {
         type: SIGNUP_USER_SUCCESS,
         payload: user
       });
-
-      // startApp();
     })
     .catch(() => {
       // error. doing nothing OK for now.
@@ -84,3 +87,29 @@ export const signupUserFailure = (dispatch, errorMsg) => {
     payload: errorMsg
   });
 };
+
+export const logoutUserAttempt = () => (
+  (dispatch) => {
+    dispatch({ type: LOGOUT_USER_ATTEMPT });
+
+    Firebase.auth().signOut()
+      .then(() => logoutUserSuccess(dispatch))
+      .catch(() => logoutUserFailure(dispatch, 'Logout Attempt Failed'));
+  }
+);
+
+const logoutUserSuccess = (dispatch) => {
+  dispatch({ type: LOGOUT_USER_SUCCESS });
+};
+
+const logoutUserFailure = (dispatch, errorMsg) => {
+  dispatch({
+    type: LOGOUT_USER_FAILURE,
+    payload: errorMsg
+  });
+};
+
+export const addUser = user => ({
+  type: ADD_USER,
+  payload: user
+});

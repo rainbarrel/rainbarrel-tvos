@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Launching = () => {
+const LovedOnesListItem = ({ label }) => {
   const { containerStyle, textStyle } = styles;
 
   return (
     <View style={containerStyle}>
       <Text style={textStyle}>
-        Rainbarrel
+        {label}
       </Text>
     </View>
   );
@@ -15,13 +15,13 @@ const Launching = () => {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
   textStyle: {
-    fontSize: 100
+    padding: 10
   }
 });
 
-export { Launching };
+export default LovedOnesListItem;

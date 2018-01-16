@@ -3,50 +3,51 @@ import Firebase from 'firebase';
 import { Provider } from 'react-redux';
 
 import configureStore from './store';
-import initFirebase from './initialization/firebase';
-import { Launching, Auth, App } from './initialization/app';
+import initFirebase from './firebase';
+import App from './components/app/App';
+import Auth from './components/auth/Auth';
+import Launching from './components/launching/Launching';
+
 
 class AppLauncher extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loggedIn: null };
+    this.state = { loggedIn: null, user: null };
+    this.store = configureStore();
     initFirebase();
-    console.disableYellowBox = true;
+    console.disableYellowBox = true; // for development
   }
 
   componentDidMount() {
     Firebase.auth().onAuthStateChanged((user) => {
       let loggedIn;
+      let newState;
 
       if (user) {
         loggedIn = true;
+        newState = { loggedIn, user };
       } else {
         loggedIn = false;
+        newState = { loggedIn };
       }
 
-      const newState = { loggedIn };
       this.setState(newState);
     });
   }
 
   render() {
-    const { loggedIn } = this.state;
-    let store;
+    const { loggedIn, user } = this.state;
 
     switch (loggedIn) {
       case true:
-        store = configureStore();
-
         return (
-          <Provider store={store}>
-            <App />
+          <Provider store={this.store}>
+            <App user={user} />
           </Provider>
         );
       case false:
-        store = configureStore();
-
         return (
-          <Provider store={store}>
+          <Provider store={this.store}>
             <Auth />
           </Provider>
         );
