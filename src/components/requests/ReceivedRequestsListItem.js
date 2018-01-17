@@ -33,12 +33,13 @@ const ReceivedRequestsListItem = ({ label, onAccept, onDecline }) => {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    marginTop: 20,
+    marginTop: 100,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
   textStyle: {
-    padding: 10
+    padding: 20,
+    fontSize: 80
   },
   buttonStyle: {
     borderWidth: 1,
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
     padding: 10
   },
   buttonTextStyle: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 80
   }
 });
 

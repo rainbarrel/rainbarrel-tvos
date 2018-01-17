@@ -15,12 +15,13 @@ const LovedOnesListItem = ({ label }) => {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    marginTop: 20,
+    marginTop: 100,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
   textStyle: {
-    padding: 10
+    padding: 30,
+    fontSize: 80
   }
 });
 
