@@ -3797,10 +3797,6 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-keep-awake-tvos@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/react-native-keep-awake-tvos/-/react-native-keep-awake-tvos-2.0.4.tgz#0fb4cd6f123e6388a2a78065a4f7b64d27ee0fac"
-
 react-native@0.51.0:
   version "0.51.0"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.51.0.tgz#fe25934b3030fd323f3ca1a70f034133465955ed"
