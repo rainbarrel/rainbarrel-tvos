@@ -15,7 +15,10 @@ class AppLauncher extends React.Component {
     this.state = { loggedIn: null, user: null };
     this.store = configureStore();
     initFirebase();
-    console.disableYellowBox = true; // for development
+
+    if (process.env.NODE_ENV === 'development') {
+      console.disableYellowBox = true;
+    }
   }
 
   componentDidMount() {
