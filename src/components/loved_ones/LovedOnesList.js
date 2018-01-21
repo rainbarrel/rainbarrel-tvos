@@ -9,7 +9,6 @@ import { changeLovedOnes } from '../../actions';
 class LovedOnesList extends React.Component {
   constructor(props) {
     super(props);
-    this.renderItem = this.renderItem.bind(this);
     this.fetchLovedOnes = this.fetchLovedOnes.bind(this);
   }
 
@@ -18,7 +17,8 @@ class LovedOnesList extends React.Component {
   }
 
   fetchLovedOnes() {
-    const user = Firebase.auth().currentUser; // LATER: change to props
+    let { user } = this.props;
+    user = user || Firebase.auth().currentUser;
 
     const db = Firebase.firestore();
     const lovedOnesRef = db.collection(`users/${user.uid}/lovedOnes`);
@@ -38,7 +38,7 @@ class LovedOnesList extends React.Component {
 
   renderItem = ({ item }) => (
     <LovedOnesListItem label={item.data().email} />
-  )
+  );
 
   render() {
     const { lovedOnes } = this.props;

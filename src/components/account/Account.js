@@ -3,8 +3,8 @@ import { View, Text } from 'react-native';
 import Firebase from 'firebase';
 import Logout from '../auth/Logout';
 
-const Account = () => {
-  const user = Firebase.auth().currentUser; // LATER: change to props
+const Account = ({ user }) => {
+  user = user || Firebase.auth().currentUser;
 
   return (
     <View>
