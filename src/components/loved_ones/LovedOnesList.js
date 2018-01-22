@@ -16,6 +16,10 @@ class LovedOnesList extends React.Component {
     this.fetchLovedOnes();
   }
 
+  shouldComponentUpdate(nextProps) {
+    return !!(nextProps.user);
+  }
+
   fetchLovedOnes() {
     let { user } = this.props;
     user = user || Firebase.auth().currentUser;
@@ -54,9 +58,10 @@ class LovedOnesList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ lovedOne }) => {
+const mapStateToProps = ({ auth, lovedOne }) => {
+  const { user } = auth;
   const { lovedOnes } = lovedOne;
-  return { lovedOnes };
+  return { user, lovedOnes };
 };
 
 const mapDispatchToProps = dispatch => ({
