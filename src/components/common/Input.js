@@ -23,6 +23,7 @@ const Input = (props) => {
         autofocus={autofocus}
         secureTextEntry={secureTextEntry}
         autoCorrect={false}
+        autoCapitalize={'none'}
       />
     </View>
   );

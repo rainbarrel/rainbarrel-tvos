@@ -21,6 +21,10 @@ class ReceivedRequestsList extends React.Component {
     this.fetchPendingRequests();
   }
 
+  shouldComponentUpdate(nextProps) {
+    return !!(nextProps.user);
+  }
+
   onAccept(request) {
     const date = new Date();
 
@@ -145,9 +149,10 @@ class ReceivedRequestsList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ request }) => {
+const mapStateToProps = ({ auth, request }) => {
+  const { user } = auth;
   const { receivedRequests } = request;
-  return { receivedRequests };
+  return { user, receivedRequests };
 };
 
 const mapDispatchToProps = dispatch => ({
